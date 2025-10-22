@@ -191,3 +191,5 @@ Temporary Items
 temp/
 tmp/
 test_data/
+telegram/config.json
+telegram/cron.log

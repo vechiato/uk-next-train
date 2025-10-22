@@ -1,0 +1,44 @@
+{
+  "telegram_token": "YOUR_TOKEN",
+  "telegram_chat_id": "YOUR_CHAT_ID",
+  "trips": [
+    {
+      "name": "Morning Commute",
+      "from": "WIM",
+      "to": "WAT",
+      "days": ["tuesday", "thursday"],
+      "time_start": "08:00",
+      "time_end": "09:00",
+      "criteria": {
+        "notify_cancelled": true,
+        "notify_delayed": true,
+        "delay_threshold_minutes": 5
+      }
+    },
+    {
+      "name": "Evening Return",
+      "from": "WAT",
+      "to": "WIM",
+      "days": ["tuesday", "thursday"],
+      "time_start": "17:00",
+      "time_end": "18:30",
+      "criteria": {
+        "notify_cancelled": true,
+        "notify_delayed": true,
+        "delay_threshold_minutes": 10
+      }
+    },
+    {
+      "name": "Weekend Trips",
+      "from": "WIM",
+      "to": "WAT",
+      "days": ["saturday", "sunday"],
+      "time_start": "10:00",
+      "time_end": "18:00",
+      "criteria": {
+        "notify_cancelled": false,
+        "notify_delayed": false
+      }
+    }
+  ]
+}
