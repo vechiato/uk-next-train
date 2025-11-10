@@ -43,7 +43,22 @@ The `config.json` supports multiple trip configurations:
 - `criteria`: Notification rules
   - `notify_cancelled`: Alert for cancelled trains
   - `notify_delayed`: Alert for delayed trains  
+  - `notify_platform`: Alert when platform is assigned and train is on time
   - `delay_threshold_minutes`: Minimum delay to trigger alert
+
+## Notification Logic
+
+The script uses smart notification rules to avoid spam:
+
+1. **Platform Assignment**: Notifies when a train is on time AND has a platform assigned (useful to know when to head to the platform)
+2. **Delays**: Notifies when delays exceed the threshold
+3. **Cancellations**: Notifies for cancelled trains
+4. **Change Detection**: Only sends notifications when something changes (golden rule)
+   - Won't send duplicate notifications for the same train status
+   - Will notify again if delay increases (e.g., 10min → 15min delay)
+   - Will notify if platform changes or other details update
+
+Each trip maintains state in `.notification_state.json` to track what was last notified.
 
 ## Setup
 1. Create a Telegram bot via @BotFather and get your bot token
@@ -66,4 +81,6 @@ Configure different from/to combinations for various journeys.
 - Uses public Huxley2 API (no credentials required)
 - Completely independent of your xbar plugin
 - Logs output to `cron.log` in the same directory
-- Only sends one alert per problematic train to avoid spam
+- Smart duplicate detection prevents notification spam
+- State file (`.notification_state.json`) tracks last notifications
+- Only notifies when something meaningful changes

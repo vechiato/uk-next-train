@@ -12,6 +12,7 @@
       "criteria": {
         "notify_cancelled": true,
         "notify_delayed": true,
+        "notify_platform": true,
         "delay_threshold_minutes": 5
       }
     },
@@ -25,6 +26,7 @@
       "criteria": {
         "notify_cancelled": true,
         "notify_delayed": true,
+        "notify_platform": true,
         "delay_threshold_minutes": 10
       }
     },
@@ -37,7 +39,8 @@
       "time_end": "18:00",
       "criteria": {
         "notify_cancelled": false,
-        "notify_delayed": false
+        "notify_delayed": false,
+        "notify_platform": false
       }
     }
   ]
